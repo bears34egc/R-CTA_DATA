@@ -1,0 +1,37 @@
+
+labels=read.csv("label.csv", header=TRUE)
+library(wordcloud)
+library(tm)
+myCorpus <- Corpus(VectorSource(labels$label))
+myCorpus <- tm_map(myCorpus, removePunctuation)
+myCorpus <- tm_map(myCorpus, tolower)
+tdm <- TermDocumentMatrix(myCorpus)
+m <- as.matrix(tdm)
+v <- sort(rowSums(m), decreasing=TRUE)
+d <- data.frame(word=names(v), freq=v)
+
+pal2 <- brewer.pal(8,"Dark2")
+png("wordcloud2label.png", width=1280,height=800)
+wordcloud(d$word,d$freq, scale=c(8,.2),min.freq=3, max.words=Inf, random.order=FALSE, rot.per=.15,colors=pal2)
+dev.off()
+
+save.image("C:\\Users\\Lindsay\\Documents\\R\\labelwordcloud")
+
+setwd("C:/Users/Lindsay/Documents/R")
+genre=read.csv("charts_genre.csv", header=TRUE)
+library(wordcloud)
+library(tm)
+myCorpus <- Corpus(VectorSource(genre$Genre))
+myCorpus <- tm_map(myCorpus, removePunctuation)
+myCorpus <- tm_map(myCorpus, tolower)
+tdm <- TermDocumentMatrix(myCorpus)
+m <- as.matrix(tdm)
+v <- sort(rowSums(m), decreasing=TRUE)
+d <- data.frame(word=names(v), freq=v)
+
+pal2 <- brewer.pal(8,"Dark2")
+png("wordcloud2genre.png", width=1280,height=800)
+wordcloud(d$word,d$freq, scale=c(14,.7),min.freq=3, max.words=Inf, random.order=FALSE, rot.per=.15,colors=pal2)
+dev.off()
+
+save.image("C:\\Users\\Lindsay\\Documents\\R\\labelwordcloud")
