@@ -1,0 +1,7 @@
+R-CTA_DATA
+==========
+
+R and SQL Server were used to analyze CTA data for patterns in ridership over a long time period. Which geographic areas had 
+the highest ridership, and map those neighborhoods.
+
+Pull in Census (demographic areas), possibly Real Estate data and see the relationship between change in CTA ridership and other socieconomics of neighborhoods in Chicago.
